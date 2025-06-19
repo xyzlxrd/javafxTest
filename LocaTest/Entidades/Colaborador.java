@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Colaborador extends Pessoa {
     
+    private int idColaborador;
     private String matricula;
     private String senha;
     
@@ -15,6 +16,13 @@ public class Colaborador extends Pessoa {
         this.senha = senha;   
     }
     
+    public int getIdColaborador() {
+        return idColaborador;
+    }
+    public void setIdColaborador(int idColaborador) {
+        this.idColaborador = idColaborador;
+    }
+
     public String getMatricula () {
         return matricula;
     }
