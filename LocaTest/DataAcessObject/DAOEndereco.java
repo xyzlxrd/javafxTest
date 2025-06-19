@@ -33,7 +33,6 @@ public class DAOEndereco {
         ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
             int idGerado = rs.getInt(1);
-            System.out.println("ID do Novo Endereço: " + idGerado);
             }
 
         ps.close();
