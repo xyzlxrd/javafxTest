@@ -33,6 +33,7 @@ public class DAOEndereco {
         ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
             int idGerado = rs.getInt(1);
+            endereco.setIdEndereco(idGerado);
             }
 
         ps.close();
