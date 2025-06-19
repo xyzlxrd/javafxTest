@@ -65,3 +65,7 @@
 .date-picker > .arrow-button {
     -fx-background-color: transparent;
 }
+
+.bglocamax{
+    -fx-background-color: linear-gradient(to top, #351e47, #522a79);
+}

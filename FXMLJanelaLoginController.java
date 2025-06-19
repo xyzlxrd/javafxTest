@@ -1,12 +1,17 @@
 package javafxtest;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -19,7 +24,7 @@ public class FXMLJanelaLoginController implements Initializable {
     private Text textId;
 
     @FXML
-    public void botaoLogin(ActionEvent event) {
+    public void botaoLogin(ActionEvent event) throws IOException {
         String user = textUsername.getText();
         String pass = textPassword.getText();
 
@@ -28,10 +33,35 @@ public class FXMLJanelaLoginController implements Initializable {
         if (logado) {
             Stage stage = (Stage) textUsername.getScene().getWindow();
             stage.close();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/javafxtest/arquivosFxml/FXMLJanelaPrincipal.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("LOCAMAX");
+        
+            Image icone = new Image("/javafxtest/img/LOCAMAXLOGO.png");
+            stage.getIcons().add(icone);
 
-        } else {
+        } 
+        else {
             textId.setText("Credenciais erradas. Tente novamente!");
         }
+    }
+    
+    @FXML
+    public void botaoCadastro(ActionEvent event) throws IOException{
+        Stage stage = (Stage) textUsername.getScene().getWindow();
+        stage.close();
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/javafxtest/arquivosFxml/FXMLJanelaRegistro.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("LOCAMAX");
+        
+        Image icone = new Image("/javafxtest/img/LOCAMAXLOGO.png");
+        stage.getIcons().add(icone);
     }
 
     @Override

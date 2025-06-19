@@ -30,7 +30,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="148.0" layoutY="558.0" mnemonicParsing="false" onAction="#botaoLogin" prefHeight="40.0" prefWidth="150.0" styleClass="botaologin" stylesheets="@fxmljanelalogin.css" text="CADASTRAR">
+      <Button layoutX="148.0" layoutY="558.0" mnemonicParsing="false" onAction="#botaoCadastro" prefHeight="40.0" prefWidth="150.0" styleClass="botaologin" stylesheets="@fxmljanelalogin.css" text="CADASTRAR">
          <font>
             <Font name="Consolas Bold" size="20.0" />
          </font>

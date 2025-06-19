@@ -8,21 +8,19 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
 public class JavaFXTest extends Application {
-    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/javafxtest/arquivosFxml/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/javafxtest/arquivosFxml/FXMLJanelaLogin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        stage.setTitle("LOCAMAX");
+        stage.setTitle("LOCAMAX - Login");
         
-        Image icone = new Image("/javafxtest/img/carro-icone.png");
+        Image icone = new Image("/javafxtest/img/LOCAMAXLOGO.png");
         stage.getIcons().add(icone);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

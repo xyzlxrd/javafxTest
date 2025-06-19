@@ -26,7 +26,8 @@ public class IntegracaoBancoDados {
             int idPessoa = -1;
             if (rsPessoa.next()) {
                 idPessoa = rsPessoa.getInt(1);
-            } else {
+            } 
+            else {
                 conexao.rollback();
                 System.out.println("Erro: não foi possível obter o ID da pessoa.");
                 return 0;
@@ -50,7 +51,8 @@ public class IntegracaoBancoDados {
             conexao.commit();
             return idPessoa;
 
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.out.println("Erro ao realizar cadastro completo: " + e.getMessage());
             e.printStackTrace();
             return 0;
@@ -60,13 +62,14 @@ public class IntegracaoBancoDados {
     public static boolean registroDeLogin(int idPessoa, String usuario, String senha, String email) {
         String sql = "UPDATE cliente SET usuario = ?, senha = ?, email = ? WHERE id_pessoa = ?";
         try (Connection conexao = DriverManager.getConnection(url, "root", "");
-             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, usuario);
             stmt.setString(2, senha);
             stmt.setString(3, email);
             stmt.setInt(4, idPessoa);
             return stmt.executeUpdate() > 0;
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.out.println("Erro ao registrar login: " + e.getMessage());
             return false;
         }
@@ -75,12 +78,13 @@ public class IntegracaoBancoDados {
     public static boolean verificarLogin(String username, String password) {
         String verificaLogin = "SELECT * FROM cliente WHERE usuario = ? AND senha = ?";
         try (Connection conexao = DriverManager.getConnection(url, "root", "");
-             PreparedStatement stmt = conexao.prepareStatement(verificaLogin)) {
+            PreparedStatement stmt = conexao.prepareStatement(verificaLogin)) {
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             return rs.next();
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             System.out.println("Erro na verificação de login: " + e.getMessage());
             return false;
         }
