@@ -8,7 +8,7 @@ import Entidades.Modelo;
 
 public class DAOModelo {
 
-    public void cadastrarColaborador(Modelo modelo) {
+    public void cadastrarColaborador(Modelo modelo) {//TESTAR
 
         String sql = "INSERT INTO Modelo (nome_modelo, fabricante, ano_fabricacao) VALUES (?, ?, ?)";
 
