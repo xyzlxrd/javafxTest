@@ -10,7 +10,7 @@ import Entidades.Aluguel;
 
 public class DAOAluguel {
     
-    public void cadastrarAluguel(Aluguel aluguel) {
+    public void cadastrarAluguel(Aluguel aluguel) {//TESTAR
 
         String sql = "INSERT INTO Aluguel (id_cliente, id_carro, data_retirada, data_devolucao, hora_retirada, hora_devolucao, valor_contrato, forma_de_pagamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
