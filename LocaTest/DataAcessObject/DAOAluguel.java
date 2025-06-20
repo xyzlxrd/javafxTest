@@ -29,14 +29,14 @@ public class DAOAluguel {
             ps.setString(8, aluguel.getFormaPagamento());
 
             ps.executeUpdate();
-            ps.close();
 
             ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
                     int idGerado = rs.getInt(1);
-                    System.out.println("ID do Novo Cliente: " + idGerado);
+                aluguel.setIdCliente(idGerado);
                 }
 
+            ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
