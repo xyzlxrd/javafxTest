@@ -48,28 +48,6 @@ public class Comandos {
     }*/
 
 /*   
-    Categoria cat = new Categoria(null, 0);
-
-    cat.setNomeCategoria("TesteN2");
-    cat.setValorDiaria(999);
-
-    new DAOCategoria().cadastrarCategoria(cat);
-*/
-
-
-/*    Endereco end = new Endereco(0, null, null, null, null, null, null, null);
-
-    end.setIdCliente(0);
-    end.setCep("12345678900");
-    end.setPais("Brasil");
-    end.setEstado("MG");
-    end.setCidade("Cidade X");
-    end.setBairro("Bairro X");
-    end.setRua("Rua X");
-    end.setNumero("123");
-
-    new DAOEndereco().cadastrarEndereco(end);
-*/
 
 /*
     Pessoa pessoa = new Pessoa(null, null, null, null, null, null, null, null)
@@ -107,16 +85,133 @@ public class Comandos {
     new DAOPessoa().cadastrarPessoa(pessoa);
 */
 
-/*
-        public void getDados(){       
-        System.out.println("CPF: "+cpf+" | NOME: "+nome+" | SEXO: "+sexo);
-        System.out.println("NOME: "+nome);
-        System.out.println("SEXO: "+sexo);
-        System.out.println("DATA DE NASCIMENTO: "+dataNascimento);
-        System.out.println("CNH: "+cnh);
-        System.out.println("TELEFONE: "+telefone);
-        System.out.println("E-MAIL: "+email);
+/*  -----------------TESTE DA CLASSE COLABORADOR-----------------
+
+    Colaborador colaborador = new Colaborador(null, null, null, null, null, null, null, null, null, null);
+
+    colaborador.setIdColaborador(pessoa.getIdPessoa());
+    new DAOColaborador().cadastrarColaborador(colaborador);*/
+
+
+
+/*  -----------------TESTE DA CLASSE ALUGUEL-----------------
+
+    Aluguel aluguel = new Aluguel(null, null, null, null, 0, null);
+
+    String respostaUsuario = null;
+    String respostaHoraUsuario = null;
+
+        System.out.print("A Data da Retirada do Veículo foi marcada? (Y/N): ");
+        respostaUsuario = scanner.nextLine();
+
+        if (respostaUsuario.equalsIgnoreCase("Y")) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String dataMarcada;
+
+            while (true) {
+                System.out.print("Digite a data marcada (dd/MM/yyyy): ");
+                dataMarcada = scanner.nextLine();
+
+                try {
+                    LocalDate dataConvertida = LocalDate.parse(dataMarcada, formatter);
+
+                    if (dataConvertida.isBefore(LocalDate.now())) {
+                        System.out.println("Data de Retirada Inválida (data no passado). Tente novamente.");
+                    } else {
+                        break;
+                    }
+                } catch (DateTimeParseException e) {
+                    System.out.println("Formato de data inválido. Use o padrão dd/MM/yyyy.");
+                }
+            }
+            aluguel.setDataRetirada(dataMarcada);
+        }
+            
+    System.out.print("Data de Devolução: ");
+    String dataDevolucao = scanner.nextLine();
+
+    System.out.print("A Hora da Retirada do Veículo foi marcada? (Y/N): ");
+    respostaHoraUsuario = scanner.nextLine();
+
+        if (respostaHoraUsuario.equalsIgnoreCase("Y")) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            String horaMarcada;
+
+            while (true) {
+                System.out.print("Digite a Hora marcada (HH:mm): ");
+                horaMarcada = scanner.nextLine();
+
+                try {
+                    LocalTime horaConvertida = LocalTime.parse(horaMarcada, formatter);
+
+                    if (horaConvertida.isBefore(LocalTime.now())) {
+                        System.out.println("Data de Retirada Inválida (data no passado). Tente novamente.");
+                    } else {
+                        break;
+                    }
+                } catch (DateTimeParseException e) {
+                    System.out.println("Formato inválido. Use o padrão HH:mm.");
+                }
+            }
+            aluguel.setHoraRetirada(horaMarcada);
+        }
+
+    System.out.print("Hora de Devolucão: ");
+    String horaDevolucao = scanner.nextLine();
+
+    System.out.print("Valor da Contratação: ");
+    double valorContratacao = scanner.nextDouble();
+
+    System.out.println("Digite a forma de Pagamento");
+    System.out.println("1) Cartão de Crédito");
+    System.out.println("2) Cartão Débito");
+    System.out.println("3) PIX");
+    System.out.println("4) Transferência");
+    System.out.println("5) Boleto");
+    System.out.print("Opção: ");
+    int opcaoPagamento = scanner.nextInt();
+
+    String formaDePagamento = null;
+
+    switch (opcaoPagamento) {
+        case 1:
+            formaDePagamento = "Cartão de Crédito";
+        break;
+
+        case 2:
+            formaDePagamento = "Cartão Débito";
+        break;
+
+        case 3:
+            formaDePagamento = "Pix";
+        break;
+
+        case 4:
+            formaDePagamento = "Transferência";
+        break;
+
+        case 5:
+            formaDePagamento = "Boleto";
+        break;
+
+        default:
+            System.out.println("Opção Inválida.");
+        break;
     }
- */
+
+    aluguel.setDataDevolucao(dataDevolucao);
+    aluguel.setHoraDevolucao(horaDevolucao);
+    aluguel.setValorContrato(valorContratacao);
+    aluguel.setFormaPagamento(formaDePagamento);
+
+    System.out.println("INFORMAÇÕES DO ALUGUEL:");
+    System.out.println("Data de Retirada: "+(aluguel.getDataRetirada()));
+    System.out.println("Data de Devolução: "+(aluguel.getDataDevolucao()));
+    System.out.println("Hora de Retirada: "+(aluguel.getHoraRetirada()));
+    System.out.println("Hora de Devolução: "+(aluguel.getHoraDevolucao()));
+    System.out.println("Valor do Contrato: "+(aluguel.getValorContrato()));
+    System.out.println("Forma de Pagamento: "+(aluguel.getFormaPagamento()));
+    scanner.close();
+    */
 
 }
