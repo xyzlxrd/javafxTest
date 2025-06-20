@@ -9,7 +9,7 @@ import Entidades.Colaborador;
 
 public class DAOColaborador {
 
-    public void cadastrarColaborador(Colaborador colaborador) {
+    public void cadastrarColaborador(Colaborador colaborador) {//TESTAR
 
         String sql = "INSERT INTO Colaborador (id_pessoa, matricula, senha) VALUES (?, ?, ?)";
 
