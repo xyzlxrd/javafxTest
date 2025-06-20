@@ -1,7 +1,7 @@
 Se você tiver com problema com javafx:
 
 PASSO 1:
-Primeiro vá em resources  no nosso projeto do github na branch v1.0 ou alguma superior a essa e baixa o arquivos javafx-sdk-24, jdk 8, e javafx_scenebuilder-2-0 windows.
+Primeiro vá em resources no nosso projeto do github na branch v1.1 e baixa os arquivos javafx-sdk-24, jdk 8, e javafx_scenebuilder-2-0 windows.
 
 PASSO 2:
 Abra na barra Tools > Options > Java > JavaFX > Define o Scene Builder com a pasta onde vc baixou o scene builder, reconheceu? OK vamo pro proximo!
