@@ -28,6 +28,7 @@ public class IntegracaoParaCarros {
                 carro.setIdCarro(rs.getInt("id_carro"));
                 carro.setIdCategoria(rs.getInt("id_categoria"));
                 carro.setIdModelo(rs.getInt("id_modelo"));
+                carro.setNomeCarro(rs.getString("nome_carro"));
                 carro.setPlaca(rs.getString("placa"));
                 carro.setQntAssentos(rs.getInt("qnt_assentos"));
                 carro.setQntPortas(rs.getInt("qnt_portas"));
@@ -39,7 +40,7 @@ public class IntegracaoParaCarros {
                 carro.setArCondicionado(rs.getBoolean("arCondicionado"));
                 carro.setAirbag(rs.getBoolean("airbag"));
                 carro.setCor(rs.getString("cor"));
-                carro.setDisponibilidade(rs.getBoolean("disponibilidade"));
+                carro.setDisponibilidade(rs.getString("disponibilidade"));
                 carros.add(carro);
             }
         } 

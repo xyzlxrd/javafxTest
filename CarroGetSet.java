@@ -4,6 +4,7 @@ public class CarroGetSet {
     private int idCarro;
     private int idCategoria;
     private int idModelo;
+    private String nome_carro;
     private String placa;
     private int qntAssentos;
     private int qntPortas;
@@ -15,7 +16,7 @@ public class CarroGetSet {
     private boolean arCondicionado;
     private boolean airbag;
     private String cor;
-    private boolean disponibilidade;
+    private String disponibilidade;
     
 
     public int getIdCarro() { return idCarro; }
@@ -27,6 +28,9 @@ public class CarroGetSet {
     public int getIdModelo() { return idModelo; }
     public void setIdModelo(int idModelo) { this.idModelo = idModelo; }
 
+    public String getNomeCarro() { return nome_carro; }
+    public void setNomeCarro(String nome_carro) { this.nome_carro = nome_carro; }
+    
     public String getPlaca() { return placa; }
     public void setPlaca(String placa) { this.placa = placa; }
 
@@ -59,7 +63,6 @@ public class CarroGetSet {
 
     public String getCor() { return cor; }
     public void setCor(String cor) { this.cor = cor; }
-
-    public boolean isDisponibilidade() { return disponibilidade; }
-    public void setDisponibilidade(boolean disponibilidade) { this.disponibilidade = disponibilidade; }
+    public String getDisponibilidade() { return disponibilidade; }
+    public void setDisponibilidade(String disponibilidade) { this.disponibilidade = disponibilidade; }
 }

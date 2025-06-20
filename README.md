@@ -1,7 +1,11 @@
 Se você tiver com problema com javafx:
 
 PASSO 1:
-Primeiro vá em resources no nosso projeto do github na branch v1.1 e baixa os arquivos javafx-sdk-24, jdk 8, e javafx_scenebuilder-2-0 windows.
+Primeiro vá em resources no nosso projeto do github na branch v1.1 ou alguma superior a essa e baixe esses outros arquivos na web;
+- [JDK 8u202 (Oracle)](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
+- [JavaFX SDK 24.0.1](https://gluonhq.com/products/javafx/)
+- [SceneBuilder 24.0.0-RC1](https://gluonhq.com/products/scene-builder/)
+- [MySQL Connector/J 9.3.0](https://dev.mysql.com/downloads/connector/j/)
 
 PASSO 2:
 Abra na barra Tools > Options > Java > JavaFX > Define o Scene Builder com a pasta onde vc baixou o scene builder, reconheceu? OK vamo pro proximo!
@@ -12,7 +16,7 @@ Agora ainda em Options > Java vá para Ant >  Add jar/zip (adiciona o arquivo ja
 PASSO 4:
 Agora clique novamente em Tools > Java Platforms > Add platform > Java Standard Editon > selecione a pasta onde baixou o java 8 > next > Escreva o nome da sua platform e da finish.
 
-Passo 5:
+PASSO 5:
 Ainda em Java Platform clica na plataforma q acabou de criar > Sources > adiciona os arquivos q baixou do javafx-sdk-24.
 
 PASSO 6:

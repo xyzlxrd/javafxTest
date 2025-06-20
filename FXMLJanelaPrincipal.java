@@ -1,78 +1,89 @@
 package javafxtest;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.TextAlignment;
 
 public class FXMLJanelaPrincipal implements Initializable {
 
-    @FXML private ToggleButton btnHatch;
-    @FXML private ToggleButton btnSedan;
-    @FXML private ToggleButton btnSUV;
-    @FXML private ToggleButton btnPickup;
-    @FXML private Button btnFiltrar;
-    @FXML private TilePane tilePaneCarros;
+    @FXML
+    private TilePane tilePaneCarros;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        btnFiltrar.setOnAction(e -> filtrarCarros());
+    public void initialize(URL location, ResourceBundle resources) {
+        tilePaneCarros.setHgap(15);
+        tilePaneCarros.setVgap(15);
+        carregarCarros();
     }
 
-    private void filtrarCarros() {
-        List<Integer> categoriasSelecionadas = new ArrayList<>();
-        if (btnHatch.isSelected()) categoriasSelecionadas.add(1);
-        if (btnSedan.isSelected()) categoriasSelecionadas.add(2);
-        if (btnSUV.isSelected()) categoriasSelecionadas.add(3);
-        if (btnPickup.isSelected()) categoriasSelecionadas.add(4);
+    private void carregarCarros() {
+        List<Integer> categoriasSelecionadas = Arrays.asList(1, 2, 3);
+
         List<CarroGetSet> carros = IntegracaoParaCarros.listarPorCategorias(categoriasSelecionadas);
-        mostrarCarros(carros);
-    }
 
-    private void mostrarCarros(List<CarroGetSet> carros) {
-        tilePaneCarros.getChildren().clear();
         for (CarroGetSet carro : carros) {
             VBox card = criarCardCarro(carro);
             tilePaneCarros.getChildren().add(card);
         }
     }
-
+    
+    private void abrirDetalhesCarro(CarroGetSet carro) {
+            System.out.println("Abrindo detalhes para: " + carro.getNomeCarro());
+    }
+    
     private VBox criarCardCarro(CarroGetSet carro) {
-        VBox box = new VBox(5);
-        box.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 10; -fx-border-color: #ccc; -fx-border-radius: 5;");
+            ImageView imagem = new ImageView();
+        String imgPath = "/javafxtest/img/modelo_" + carro.getIdModelo() + ".png";
+        imagem.setImage(new Image(getClass().getResourceAsStream(imgPath)));
+        imagem.setFitWidth(150);
+        imagem.setFitHeight(100);
+        imagem.setPreserveRatio(true);
+        
+        Label titulo = new Label(carro.getNomeCarro());
+        titulo.getStyleClass().add("titulo");
+        titulo.setWrapText(true);
+        titulo.setTextAlignment(TextAlignment.CENTER);
 
-        String caminhoImagem = "/imagens/carros/modelo_" + carro.getIdModelo() + ".png";
+        String subtituloStr = "Cor: " + carro.getCor() + " | Combustível: " + carro.getTipoCombustivel();
+        Label subtitulo = new Label(subtituloStr);
+        subtitulo.getStyleClass().add("subtitulo");
 
-        ImageView img = new ImageView();
-        InputStream is = getClass().getResourceAsStream(caminhoImagem);
-        if(is != null) {
-            img.setImage(new Image(is));
-        } 
-        else{
-            System.out.println("Imagem não encontrada: " + caminhoImagem);
+        Label preco1 = new Label("A partir de");
+        preco1.getStyleClass().add("subtitulo");
+        Label preco2 = new Label("R$72,80/ Dia");
+        preco2.getStyleClass().add("preco");
+        Label preco3 = new Label("R$364/ Total");
+        preco3.getStyleClass().add("subtotal");
+
+        VBox precoBox = new VBox(5, preco1, preco2, preco3);
+        precoBox.getStyleClass().add("preco-box");
+
+        Button verMais = new Button("Ver mais");
+        verMais.getStyleClass().add("button-vermais");
+        verMais.setOnAction(e -> abrirDetalhesCarro(carro));
+
+        VBox vbox = new VBox(15, titulo, subtitulo, imagem, precoBox, verMais);
+        vbox.getStyleClass().add("cardCarro");
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPrefWidth(260);
+        vbox.setPadding(new Insets(15));
+
+        if (!tilePaneCarros.getStylesheets().contains(getClass().getResource("/javafxtest/arquivosFxml/fxmljanelalogin.css").toExternalForm())) {
+            tilePaneCarros.getStylesheets().add(getClass().getResource("/javafxtest/arquivosFxml/fxmljanelalogin.css").toExternalForm());
         }
-        img.setFitWidth(120);
-        img.setPreserveRatio(true);
 
-        Label placa = new Label("Placa: " + carro.getPlaca());
-        Label assentos = new Label("Assentos: " + carro.getQntAssentos());
-        Label portas = new Label("Portas: " + carro.getQntPortas());
-        Label cor = new Label("Cor: " + carro.getCor());
-        Label disponivel = new Label(carro.isDisponibilidade() ? "Disponivel" : "Indisponivel");
-
-        Button btnMais = new Button("Ver mais");
-
-        box.getChildren().addAll(img, placa, assentos, portas, cor, disponivel, btnMais);
-        return box;
+        return vbox;
     }
 }
