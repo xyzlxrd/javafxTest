@@ -1,21 +1,31 @@
 package Entidades;
 
+import java.time.Year;
+
 public class Modelo {
 
-private String nomeModelo;
-private String fabricante;
-private int anoFabricacao;
+    private int idModelo;
+    private String nomeModelo;
+    private String fabricante;
+    private Year anoFabricacao;
     
-    public Modelo(String nomeModelo, String fabricante, int anoFabricacao) {
+    public Modelo(String nomeModelo, String fabricante, Year anoFabricacao) {
         this.nomeModelo = nomeModelo;
         this.fabricante = fabricante;
         this.anoFabricacao = anoFabricacao;
     }
 
-    public String getModelo() {
+    public int getIdModelo() {
+        return idModelo;
+    }
+    public void setIdModelo(int idModelo) {
+        this.idModelo = idModelo;
+    }
+
+    public String getNomeModelo() {
         return nomeModelo;
     }
-    public void setModelo(String newModelo) {
+    public void setNomeModelo(String newModelo) {
         this.nomeModelo = newModelo;
     }
     
@@ -26,10 +36,11 @@ private int anoFabricacao;
         this.fabricante = newFabricante;
     }
     
-    public int getAnoFabricacao() {
+    public Year getAnoFabricacao() {
         return anoFabricacao;
     }
-    public void setAnoFabricacao(int newAnoFabricacao) {
-        this.anoFabricacao = newAnoFabricacao;
+    public void setAnoFabricacao(String newAnoFabricacao) {
+        Year anoFabricacao = Year.parse(newAnoFabricacao);
+        this.anoFabricacao = anoFabricacao;
     }
 }
