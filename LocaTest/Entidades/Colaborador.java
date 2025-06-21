@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.ArrayList;
 
 public class Colaborador extends Pessoa {
@@ -21,6 +22,15 @@ public class Colaborador extends Pessoa {
     }
 
     //--- MÉTODOS PARA ACESSAR, ADICIONAR, E/OU REMOVER OS MODELOS DOS CARROS ABAIXO:
+
+    public Modelo criarModelo(String nomeModelo, String fabricante, Year anoFabricacao) {
+        Modelo novoModelo = new Modelo(nomeModelo, fabricante, anoFabricacao);
+
+        System.out.println("Nome do Modelo criado(a): "+novoModelo.getNomeModelo());
+        System.out.println("Fabricante do Modelo criado(a): "+novoModelo.getFabricante());
+        System.out.println("Ano de Fabricação do Modelo criado(a): "+novoModelo.getAnoFabricacao());
+        return novoModelo;
+    }
 
     public void listaModelo() {
         if (modelos.isEmpty()) {
@@ -56,6 +66,14 @@ public class Colaborador extends Pessoa {
     }
 
     //--- MÉTODOS PARA ACESSAR, ADICIONAR, E/OU REMOVER AS CATEGORIAS DOS CARROS ABAIXO:
+
+    public Categoria criarCategoria(String nomeCategoria, double valorDiaria) {
+        Categoria novaCategoria = new Categoria(nomeCategoria, valorDiaria);
+
+        System.out.println("Nome da Categoria criada: "+novaCategoria.getNomeCategoria());
+        System.out.println("Valor da Diaria da Categoria criada: "+novaCategoria.getValorDiaria());
+        return novaCategoria;
+    }
 
     public void listaCategoria() {
         if (categorias.isEmpty()) {
@@ -123,4 +141,5 @@ public class Colaborador extends Pessoa {
     public void setSenha (String novaSenha) {
         this.senha = novaSenha;
     }
+
 }
